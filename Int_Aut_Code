@@ -1,0 +1,2650 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
+    on Tue Nov 23 14:30:29 2021
+If you publish work using this script the most relevant publication is:
+
+    Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
+        PsychoPy2: Experiments in behavior made easy Behav Res 51: 195. 
+        https://doi.org/10.3758/s13428-018-01193-y
+
+"""
+
+from __future__ import absolute_import, division
+
+from psychopy import locale_setup
+from psychopy import prefs
+from psychopy import sound, gui, visual, core, data, event, logging, clock, colors
+from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
+                                STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
+
+import numpy as np  # whole numpy lib is available, prepend 'np.'
+from numpy import (sin, cos, tan, log, log10, pi, average,
+                   sqrt, std, deg2rad, rad2deg, linspace, asarray)
+from numpy.random import random, randint, normal, shuffle, choice as randchoice
+import os  # handy system and path functions
+import sys  # to get file system encoding
+
+from psychopy.hardware import keyboard
+
+
+
+# Ensure that relative paths start from the same directory as this script
+_thisDir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(_thisDir)
+
+# Store info about the experiment session
+psychopyVersion = '2021.2.3'
+expName = 'Int&Aut+MDMQ'  # from the Builder filename that created this script
+expInfo = {'participant': '', 'session': '001'}
+dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
+if dlg.OK == False:
+    core.quit()  # user pressed cancel
+expInfo['date'] = data.getDateStr()  # add a simple timestamp
+expInfo['expName'] = expName
+expInfo['psychopyVersion'] = psychopyVersion
+
+# Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
+filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+
+# An ExperimentHandler isn't essential but helps with data saving
+thisExp = data.ExperimentHandler(name=expName, version='',
+    extraInfo=expInfo, runtimeInfo=None,
+    originPath='/Users/floreleblanc/Desktop/GROUP_PROJECT/IntAutMDMQ.py',
+    savePickle=True, saveWideText=True,
+    dataFileName=filename)
+# save a log file for detail verbose info
+logFile = logging.LogFile(filename+'.log', level=logging.EXP)
+logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a file
+
+endExpNow = False  # flag for 'escape' or other condition => quit the exp
+frameTolerance = 0.001  # how close to onset before 'same' frame
+
+# Start Code - component code to be run after the window creation
+
+# Setup the Window
+win = visual.Window(
+    size=[1440, 900], fullscr=True, screen=0, 
+    winType='pyglet', allowGUI=False, allowStencil=False,
+    monitor='testMonitor', color=[-1,-1,-1], colorSpace='rgb',
+    blendMode='avg', useFBO=True, 
+    units='height')
+# store frame rate of monitor if we can measure it
+expInfo['frameRate'] = win.getActualFrameRate()
+if expInfo['frameRate'] != None:
+    frameDur = 1.0 / round(expInfo['frameRate'])
+else:
+    frameDur = 1.0 / 60.0  # could not measure, so guess
+
+# Setup eyetracking
+ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
+
+# create a default keyboard (e.g. to check for escape)
+defaultKeyboard = keyboard.Keyboard()
+
+# Initialize components for Routine "WelcomeScreen"
+WelcomeScreenClock = core.Clock()
+WelcomeText = visual.TextStim(win=win, name='WelcomeText',
+    text='Welcome to the emotional memory task!\n\nIn this experiment, you will have multiple tasks. The specific instructions for each individual task will be provided before you begin.\n\nPress the space bar when you are ready to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_WelcomeText = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Neut_Int"
+Instructions_Neut_IntClock = core.Clock()
+text_Instructions_Neut_Int = visual.TextStim(win=win, name='text_Instructions_Neut_Int',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nRemember to ONLY use the same hand when pressing arrows or numbers. \n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Int = keyboard.Keyboard()
+
+# Initialize components for Routine "Neut_Int_Task"
+Neut_Int_TaskClock = core.Clock()
+Neut_Int_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Neut_Int_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Neut_Int_Distractor = visual.ImageStim(
+    win=win,
+    name='Neut_Int_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even = keyboard.Keyboard()
+Scale = visual.ImageStim(
+    win=win,
+    name='Scale', 
+    image='int_scale.jpg', mask=None,
+    ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Neut_Int_Scale_Resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Neut_Aut"
+Instructions_Neut_AutClock = core.Clock()
+text_Instructions_Neut_Aut = visual.TextStim(win=win, name='text_Instructions_Neut_Aut',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Aut = keyboard.Keyboard()
+
+# Initialize components for Routine "Neut_Aut_Task"
+Neut_Aut_TaskClock = core.Clock()
+Neut_Aut_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Neut_Aut_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Neut_Aut_Distractor = visual.ImageStim(
+    win=win,
+    name='Neut_Aut_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even_2 = keyboard.Keyboard()
+Neut_Aut_Set = visual.ImageStim(
+    win=win,
+    name='Neut_Aut_Set', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1.5, 0.8),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Neut_Aut_Set_Resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Pos_Prime"
+Instructions_Pos_PrimeClock = core.Clock()
+text = visual.TextStim(win=win, name='text',
+    text='In the following task, you will be emotionally primed. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Pos_Prime = keyboard.Keyboard()
+
+# Initialize components for Routine "Pos_Prime_MDMQ"
+Pos_Prime_MDMQClock = core.Clock()
+Pos_Priming_Task = visual.TextStim(win=win, name='Pos_Priming_Task',
+    text='Positive Priming Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid positive memory.\n\nAny positive instance is valid, there is no restriction. ',
+    font='Open Sans',
+    pos=(0, 0), height=0.02, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+win.allowStencil = True
+MDMQ_Scale_Pos = visual.Form(win=win, name='MDMQ_Scale_Pos',
+    items='MDMQ.xlsx',
+    textHeight=0.03,
+    font='Open Sans',
+    randomize=True,
+    style='dark',
+    fillColor=None, borderColor=None, itemColor='white', 
+    responseColor='white', markerColor='red', colorSpace='rgb', 
+    size=(1.2, 0.9),
+    pos=(0, 0),
+    itemPadding=0.05
+)
+Pos_MDMQ_proceed = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Pos_Int"
+Instructions_Pos_IntClock = core.Clock()
+text_Instructions_Neut_Int_2 = visual.TextStim(win=win, name='text_Instructions_Neut_Int_2',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Int_2 = keyboard.Keyboard()
+
+# Initialize components for Routine "Pos_Int_Task"
+Pos_Int_TaskClock = core.Clock()
+Pos_Int_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Pos_Int_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Pos_Int_Distractor = visual.ImageStim(
+    win=win,
+    name='Pos_Int_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even_3 = keyboard.Keyboard()
+Scale_2 = visual.ImageStim(
+    win=win,
+    name='Scale_2', 
+    image='int_scale.jpg', mask=None,
+    ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Pos_Int_Scale_Resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Pos_Aut"
+Instructions_Pos_AutClock = core.Clock()
+text_Instructions_Neut_Aut_2 = visual.TextStim(win=win, name='text_Instructions_Neut_Aut_2',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Aut_2 = keyboard.Keyboard()
+
+# Initialize components for Routine "Pos_Aut_Task"
+Pos_Aut_TaskClock = core.Clock()
+Pos_Aut_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Pos_Aut_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Pos_Aut_Distractor = visual.ImageStim(
+    win=win,
+    name='Pos_Aut_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even_4 = keyboard.Keyboard()
+Pos_Aut_Set = visual.ImageStim(
+    win=win,
+    name='Pos_Aut_Set', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1.5, 0.8),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Pos_Aut_Set_Resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Neg_Prime"
+Instructions_Neg_PrimeClock = core.Clock()
+text_2 = visual.TextStim(win=win, name='text_2',
+    text='In the following task, you will be emotionally primed. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Pos_Prime_2 = keyboard.Keyboard()
+
+# Initialize components for Routine "Neg_Prime_MDMQ"
+Neg_Prime_MDMQClock = core.Clock()
+Neg_Priming_Task = visual.TextStim(win=win, name='Neg_Priming_Task',
+    text='Negative Priming Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid negative memory.\n\nAny negative instance is valid, there is no restriction. ',
+    font='Open Sans',
+    pos=(0, 0), height=0.02, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+win.allowStencil = True
+MDMQ_Scale_Neg = visual.Form(win=win, name='MDMQ_Scale_Neg',
+    items='MDMQ.xlsx',
+    textHeight=0.03,
+    font='Open Sans',
+    randomize=True,
+    style='dark',
+    fillColor=None, borderColor=None, itemColor='white', 
+    responseColor='white', markerColor='red', colorSpace='rgb', 
+    size=(1.2, 0.9),
+    pos=(0, 0),
+    itemPadding=0.05
+)
+Neg_MDMQ_proceed = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Neg_Int"
+Instructions_Neg_IntClock = core.Clock()
+text_Instructions_Neut_Int_3 = visual.TextStim(win=win, name='text_Instructions_Neut_Int_3',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Int_3 = keyboard.Keyboard()
+
+# Initialize components for Routine "Neg_Int_Task"
+Neg_Int_TaskClock = core.Clock()
+Neg_Int_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Neg_Int_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Neg_Int_Distractor = visual.ImageStim(
+    win=win,
+    name='Neg_Int_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even_5 = keyboard.Keyboard()
+Scale_3 = visual.ImageStim(
+    win=win,
+    name='Scale_3', 
+    image='int_scale.jpg', mask=None,
+    ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Neg_Int_Scale_Resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Instructions_Neg_Aut"
+Instructions_Neg_AutClock = core.Clock()
+text_Instructions_Neut_Aut_3 = visual.TextStim(win=win, name='text_Instructions_Neut_Aut_3',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp_Instructions_Neut_Aut_3 = keyboard.Keyboard()
+
+# Initialize components for Routine "Neg_Aut_Task"
+Neg_Aut_TaskClock = core.Clock()
+Neg_Aut_Face_Stimuli = visual.ImageStim(
+    win=win,
+    name='Neg_Aut_Face_Stimuli', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.7, 0.7),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Neg_Aut_Distractor = visual.ImageStim(
+    win=win,
+    name='Neg_Aut_Distractor', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-1.0)
+Odd_Even_6 = keyboard.Keyboard()
+Neg_Aut_Set = visual.ImageStim(
+    win=win,
+    name='Neg_Aut_Set', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1.5, 0.8),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-3.0)
+Neg_Aut_Set_Resp = keyboard.Keyboard()
+
+# Create some handy timers
+globalClock = core.Clock()  # to track the time since experiment started
+routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
+
+# ------Prepare to start Routine "WelcomeScreen"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_WelcomeText.keys = []
+key_resp_WelcomeText.rt = []
+_key_resp_WelcomeText_allKeys = []
+# keep track of which components have finished
+WelcomeScreenComponents = [WelcomeText, key_resp_WelcomeText]
+for thisComponent in WelcomeScreenComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+WelcomeScreenClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "WelcomeScreen"-------
+while continueRoutine:
+    # get current time
+    t = WelcomeScreenClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=WelcomeScreenClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *WelcomeText* updates
+    if WelcomeText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        WelcomeText.frameNStart = frameN  # exact frame index
+        WelcomeText.tStart = t  # local t and not account for scr refresh
+        WelcomeText.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(WelcomeText, 'tStartRefresh')  # time at next scr refresh
+        WelcomeText.setAutoDraw(True)
+    
+    # *key_resp_WelcomeText* updates
+    waitOnFlip = False
+    if key_resp_WelcomeText.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_WelcomeText.frameNStart = frameN  # exact frame index
+        key_resp_WelcomeText.tStart = t  # local t and not account for scr refresh
+        key_resp_WelcomeText.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_WelcomeText, 'tStartRefresh')  # time at next scr refresh
+        key_resp_WelcomeText.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_WelcomeText.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_WelcomeText.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_WelcomeText.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_WelcomeText.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_WelcomeText_allKeys.extend(theseKeys)
+        if len(_key_resp_WelcomeText_allKeys):
+            key_resp_WelcomeText.keys = _key_resp_WelcomeText_allKeys[-1].name  # just the last key pressed
+            key_resp_WelcomeText.rt = _key_resp_WelcomeText_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in WelcomeScreenComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "WelcomeScreen"-------
+for thisComponent in WelcomeScreenComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('WelcomeText.started', WelcomeText.tStartRefresh)
+thisExp.addData('WelcomeText.stopped', WelcomeText.tStopRefresh)
+# check responses
+if key_resp_WelcomeText.keys in ['', [], None]:  # No response was made
+    key_resp_WelcomeText.keys = None
+thisExp.addData('key_resp_WelcomeText.keys',key_resp_WelcomeText.keys)
+if key_resp_WelcomeText.keys != None:  # we had a response
+    thisExp.addData('key_resp_WelcomeText.rt', key_resp_WelcomeText.rt)
+thisExp.addData('key_resp_WelcomeText.started', key_resp_WelcomeText.tStartRefresh)
+thisExp.addData('key_resp_WelcomeText.stopped', key_resp_WelcomeText.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "WelcomeScreen" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# ------Prepare to start Routine "Instructions_Neut_Int"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Int.keys = []
+key_resp_Instructions_Neut_Int.rt = []
+_key_resp_Instructions_Neut_Int_allKeys = []
+# keep track of which components have finished
+Instructions_Neut_IntComponents = [text_Instructions_Neut_Int, key_resp_Instructions_Neut_Int]
+for thisComponent in Instructions_Neut_IntComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Neut_IntClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Neut_Int"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Neut_IntClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Neut_IntClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Int* updates
+    if text_Instructions_Neut_Int.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Int.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Int.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Int.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Int, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Int.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Int* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Int.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Int.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Int.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Int.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Int, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Int.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Int.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Int.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Int.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Int.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Int_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Int_allKeys):
+            key_resp_Instructions_Neut_Int.keys = _key_resp_Instructions_Neut_Int_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Int.rt = _key_resp_Instructions_Neut_Int_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Neut_IntComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Neut_Int"-------
+for thisComponent in Instructions_Neut_IntComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Int.started', text_Instructions_Neut_Int.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Int.stopped', text_Instructions_Neut_Int.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Int.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Int.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Int.keys',key_resp_Instructions_Neut_Int.keys)
+if key_resp_Instructions_Neut_Int.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Int.rt', key_resp_Instructions_Neut_Int.rt)
+thisExp.addData('key_resp_Instructions_Neut_Int.started', key_resp_Instructions_Neut_Int.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Int.stopped', key_resp_Instructions_Neut_Int.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Neut_Int" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Neut_Int = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Intentional_Tasks.xlsx', selection='0:15'),
+    seed=None, name='Neut_Int')
+thisExp.addLoop(Neut_Int)  # add the loop to the experiment
+thisNeut_Int = Neut_Int.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisNeut_Int.rgb)
+if thisNeut_Int != None:
+    for paramName in thisNeut_Int:
+        exec('{} = thisNeut_Int[paramName]'.format(paramName))
+
+for thisNeut_Int in Neut_Int:
+    currentLoop = Neut_Int
+    # abbreviate parameter names if possible (e.g. rgb = thisNeut_Int.rgb)
+    if thisNeut_Int != None:
+        for paramName in thisNeut_Int:
+            exec('{} = thisNeut_Int[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Neut_Int_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Neut_Int_Face_Stimuli.setImage(Stimulus)
+    Neut_Int_Distractor.setImage(Dots)
+    Odd_Even.keys = []
+    Odd_Even.rt = []
+    _Odd_Even_allKeys = []
+    Neut_Int_Scale_Resp.keys = []
+    Neut_Int_Scale_Resp.rt = []
+    _Neut_Int_Scale_Resp_allKeys = []
+    # keep track of which components have finished
+    Neut_Int_TaskComponents = [Neut_Int_Face_Stimuli, Neut_Int_Distractor, Odd_Even, Scale, Neut_Int_Scale_Resp]
+    for thisComponent in Neut_Int_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Neut_Int_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Neut_Int_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Neut_Int_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Neut_Int_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Neut_Int_Face_Stimuli* updates
+        if Neut_Int_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Neut_Int_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Neut_Int_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Neut_Int_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Int_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Neut_Int_Face_Stimuli.setAutoDraw(True)
+        if Neut_Int_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Neut_Int_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Neut_Int_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Neut_Int_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neut_Int_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Neut_Int_Face_Stimuli.setAutoDraw(False)
+        
+        # *Neut_Int_Distractor* updates
+        if Neut_Int_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Neut_Int_Distractor.frameNStart = frameN  # exact frame index
+            Neut_Int_Distractor.tStart = t  # local t and not account for scr refresh
+            Neut_Int_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Int_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Neut_Int_Distractor.setAutoDraw(True)
+        if Neut_Int_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Neut_Int_Distractor.tStop = t  # not accounting for scr refresh
+                Neut_Int_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neut_Int_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Neut_Int_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even* updates
+        waitOnFlip = False
+        if Odd_Even.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even.frameNStart = frameN  # exact frame index
+            Odd_Even.tStart = t  # local t and not account for scr refresh
+            Odd_Even.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even.tStop = t  # not accounting for scr refresh
+                Odd_Even.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even.status = FINISHED
+        if Odd_Even.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_allKeys.extend(theseKeys)
+            if len(_Odd_Even_allKeys):
+                Odd_Even.keys = _Odd_Even_allKeys[-1].name  # just the last key pressed
+                Odd_Even.rt = _Odd_Even_allKeys[-1].rt
+        
+        # *Scale* updates
+        if Scale.status == NOT_STARTED and Neut_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Scale.frameNStart = frameN  # exact frame index
+            Scale.tStart = t  # local t and not account for scr refresh
+            Scale.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Scale, 'tStartRefresh')  # time at next scr refresh
+            Scale.setAutoDraw(True)
+        
+        # *Neut_Int_Scale_Resp* updates
+        waitOnFlip = False
+        if Neut_Int_Scale_Resp.status == NOT_STARTED and Neut_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neut_Int_Scale_Resp.frameNStart = frameN  # exact frame index
+            Neut_Int_Scale_Resp.tStart = t  # local t and not account for scr refresh
+            Neut_Int_Scale_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Int_Scale_Resp, 'tStartRefresh')  # time at next scr refresh
+            Neut_Int_Scale_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Neut_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Neut_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Neut_Int_Scale_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Neut_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Neut_Int_Scale_Resp_allKeys.extend(theseKeys)
+            if len(_Neut_Int_Scale_Resp_allKeys):
+                Neut_Int_Scale_Resp.keys = _Neut_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
+                Neut_Int_Scale_Resp.rt = _Neut_Int_Scale_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Neut_Int_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Neut_Int_Task"-------
+    for thisComponent in Neut_Int_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even.keys in ['', [], None]:  # No response was made
+        Odd_Even.keys = None
+    Neut_Int.addData('Odd_Even.keys',Odd_Even.keys)
+    if Odd_Even.keys != None:  # we had a response
+        Neut_Int.addData('Odd_Even.rt', Odd_Even.rt)
+    # check responses
+    if Neut_Int_Scale_Resp.keys in ['', [], None]:  # No response was made
+        Neut_Int_Scale_Resp.keys = None
+    Neut_Int.addData('Neut_Int_Scale_Resp.keys',Neut_Int_Scale_Resp.keys)
+    if Neut_Int_Scale_Resp.keys != None:  # we had a response
+        Neut_Int.addData('Neut_Int_Scale_Resp.rt', Neut_Int_Scale_Resp.rt)
+    # the Routine "Neut_Int_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Neut_Int'
+
+
+# ------Prepare to start Routine "Instructions_Neut_Aut"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Aut.keys = []
+key_resp_Instructions_Neut_Aut.rt = []
+_key_resp_Instructions_Neut_Aut_allKeys = []
+# keep track of which components have finished
+Instructions_Neut_AutComponents = [text_Instructions_Neut_Aut, key_resp_Instructions_Neut_Aut]
+for thisComponent in Instructions_Neut_AutComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Neut_AutClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Neut_Aut"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Neut_AutClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Neut_AutClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Aut* updates
+    if text_Instructions_Neut_Aut.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Aut.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Aut.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Aut.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Aut, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Aut.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Aut* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Aut.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Aut.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Aut.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Aut.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Aut, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Aut.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Aut.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Aut.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Aut.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Aut.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Aut_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Aut_allKeys):
+            key_resp_Instructions_Neut_Aut.keys = _key_resp_Instructions_Neut_Aut_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Aut.rt = _key_resp_Instructions_Neut_Aut_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Neut_AutComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Neut_Aut"-------
+for thisComponent in Instructions_Neut_AutComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Aut.started', text_Instructions_Neut_Aut.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Aut.stopped', text_Instructions_Neut_Aut.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Aut.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Aut.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Aut.keys',key_resp_Instructions_Neut_Aut.keys)
+if key_resp_Instructions_Neut_Aut.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Aut.rt', key_resp_Instructions_Neut_Aut.rt)
+thisExp.addData('key_resp_Instructions_Neut_Aut.started', key_resp_Instructions_Neut_Aut.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Aut.stopped', key_resp_Instructions_Neut_Aut.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Neut_Aut" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Neut_Aut = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Automatic_Tasks.xlsx', selection='0:15'),
+    seed=None, name='Neut_Aut')
+thisExp.addLoop(Neut_Aut)  # add the loop to the experiment
+thisNeut_Aut = Neut_Aut.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisNeut_Aut.rgb)
+if thisNeut_Aut != None:
+    for paramName in thisNeut_Aut:
+        exec('{} = thisNeut_Aut[paramName]'.format(paramName))
+
+for thisNeut_Aut in Neut_Aut:
+    currentLoop = Neut_Aut
+    # abbreviate parameter names if possible (e.g. rgb = thisNeut_Aut.rgb)
+    if thisNeut_Aut != None:
+        for paramName in thisNeut_Aut:
+            exec('{} = thisNeut_Aut[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Neut_Aut_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Neut_Aut_Face_Stimuli.setImage(Face_Stimulus)
+    Neut_Aut_Distractor.setImage(Dots_image)
+    Odd_Even_2.keys = []
+    Odd_Even_2.rt = []
+    _Odd_Even_2_allKeys = []
+    Neut_Aut_Set.setImage(Face_Set)
+    Neut_Aut_Set_Resp.keys = []
+    Neut_Aut_Set_Resp.rt = []
+    _Neut_Aut_Set_Resp_allKeys = []
+    # keep track of which components have finished
+    Neut_Aut_TaskComponents = [Neut_Aut_Face_Stimuli, Neut_Aut_Distractor, Odd_Even_2, Neut_Aut_Set, Neut_Aut_Set_Resp]
+    for thisComponent in Neut_Aut_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Neut_Aut_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Neut_Aut_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Neut_Aut_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Neut_Aut_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Neut_Aut_Face_Stimuli* updates
+        if Neut_Aut_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Neut_Aut_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Neut_Aut_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Neut_Aut_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Aut_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Neut_Aut_Face_Stimuli.setAutoDraw(True)
+        if Neut_Aut_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Neut_Aut_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Neut_Aut_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Neut_Aut_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neut_Aut_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Neut_Aut_Face_Stimuli.setAutoDraw(False)
+        
+        # *Neut_Aut_Distractor* updates
+        if Neut_Aut_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Neut_Aut_Distractor.frameNStart = frameN  # exact frame index
+            Neut_Aut_Distractor.tStart = t  # local t and not account for scr refresh
+            Neut_Aut_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Aut_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Neut_Aut_Distractor.setAutoDraw(True)
+        if Neut_Aut_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Neut_Aut_Distractor.tStop = t  # not accounting for scr refresh
+                Neut_Aut_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neut_Aut_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Neut_Aut_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even_2* updates
+        waitOnFlip = False
+        if Odd_Even_2.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_2.frameNStart = frameN  # exact frame index
+            Odd_Even_2.tStart = t  # local t and not account for scr refresh
+            Odd_Even_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_2, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_2.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_2.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_2.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even_2.tStop = t  # not accounting for scr refresh
+                Odd_Even_2.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even_2, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even_2.status = FINISHED
+        if Odd_Even_2.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_2.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_2_allKeys.extend(theseKeys)
+            if len(_Odd_Even_2_allKeys):
+                Odd_Even_2.keys = _Odd_Even_2_allKeys[-1].name  # just the last key pressed
+                Odd_Even_2.rt = _Odd_Even_2_allKeys[-1].rt
+        
+        # *Neut_Aut_Set* updates
+        if Neut_Aut_Set.status == NOT_STARTED and Neut_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neut_Aut_Set.frameNStart = frameN  # exact frame index
+            Neut_Aut_Set.tStart = t  # local t and not account for scr refresh
+            Neut_Aut_Set.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Aut_Set, 'tStartRefresh')  # time at next scr refresh
+            Neut_Aut_Set.setAutoDraw(True)
+        
+        # *Neut_Aut_Set_Resp* updates
+        waitOnFlip = False
+        if Neut_Aut_Set_Resp.status == NOT_STARTED and Neut_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neut_Aut_Set_Resp.frameNStart = frameN  # exact frame index
+            Neut_Aut_Set_Resp.tStart = t  # local t and not account for scr refresh
+            Neut_Aut_Set_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neut_Aut_Set_Resp, 'tStartRefresh')  # time at next scr refresh
+            Neut_Aut_Set_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Neut_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Neut_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Neut_Aut_Set_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Neut_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Neut_Aut_Set_Resp_allKeys.extend(theseKeys)
+            if len(_Neut_Aut_Set_Resp_allKeys):
+                Neut_Aut_Set_Resp.keys = _Neut_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
+                Neut_Aut_Set_Resp.rt = _Neut_Aut_Set_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Neut_Aut_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Neut_Aut_Task"-------
+    for thisComponent in Neut_Aut_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_2.keys in ['', [], None]:  # No response was made
+        Odd_Even_2.keys = None
+    Neut_Aut.addData('Odd_Even_2.keys',Odd_Even_2.keys)
+    if Odd_Even_2.keys != None:  # we had a response
+        Neut_Aut.addData('Odd_Even_2.rt', Odd_Even_2.rt)
+    # check responses
+    if Neut_Aut_Set_Resp.keys in ['', [], None]:  # No response was made
+        Neut_Aut_Set_Resp.keys = None
+    Neut_Aut.addData('Neut_Aut_Set_Resp.keys',Neut_Aut_Set_Resp.keys)
+    if Neut_Aut_Set_Resp.keys != None:  # we had a response
+        Neut_Aut.addData('Neut_Aut_Set_Resp.rt', Neut_Aut_Set_Resp.rt)
+    # the Routine "Neut_Aut_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Neut_Aut'
+
+
+# ------Prepare to start Routine "Instructions_Pos_Prime"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Pos_Prime.keys = []
+key_resp_Instructions_Pos_Prime.rt = []
+_key_resp_Instructions_Pos_Prime_allKeys = []
+# keep track of which components have finished
+Instructions_Pos_PrimeComponents = [text, key_resp_Instructions_Pos_Prime]
+for thisComponent in Instructions_Pos_PrimeComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Pos_PrimeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Pos_Prime"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Pos_PrimeClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Pos_PrimeClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text* updates
+    if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text.frameNStart = frameN  # exact frame index
+        text.tStart = t  # local t and not account for scr refresh
+        text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+        text.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Pos_Prime* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Pos_Prime.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Pos_Prime.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Pos_Prime.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Pos_Prime.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Pos_Prime, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Pos_Prime.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Pos_Prime.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Pos_Prime.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Pos_Prime.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Pos_Prime.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Pos_Prime_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Pos_Prime_allKeys):
+            key_resp_Instructions_Pos_Prime.keys = _key_resp_Instructions_Pos_Prime_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Pos_Prime.rt = _key_resp_Instructions_Pos_Prime_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Pos_PrimeComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Pos_Prime"-------
+for thisComponent in Instructions_Pos_PrimeComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text.started', text.tStartRefresh)
+thisExp.addData('text.stopped', text.tStopRefresh)
+# check responses
+if key_resp_Instructions_Pos_Prime.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Pos_Prime.keys = None
+thisExp.addData('key_resp_Instructions_Pos_Prime.keys',key_resp_Instructions_Pos_Prime.keys)
+if key_resp_Instructions_Pos_Prime.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Pos_Prime.rt', key_resp_Instructions_Pos_Prime.rt)
+thisExp.addData('key_resp_Instructions_Pos_Prime.started', key_resp_Instructions_Pos_Prime.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Pos_Prime.stopped', key_resp_Instructions_Pos_Prime.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Pos_Prime" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# ------Prepare to start Routine "Pos_Prime_MDMQ"-------
+continueRoutine = True
+routineTimer.add(105.000000)
+# update component parameters for each repeat
+Pos_MDMQ_proceed.keys = []
+Pos_MDMQ_proceed.rt = []
+_Pos_MDMQ_proceed_allKeys = []
+# keep track of which components have finished
+Pos_Prime_MDMQComponents = [Pos_Priming_Task, MDMQ_Scale_Pos, Pos_MDMQ_proceed]
+for thisComponent in Pos_Prime_MDMQComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Pos_Prime_MDMQClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Pos_Prime_MDMQ"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = Pos_Prime_MDMQClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Pos_Prime_MDMQClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *Pos_Priming_Task* updates
+    if Pos_Priming_Task.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        Pos_Priming_Task.frameNStart = frameN  # exact frame index
+        Pos_Priming_Task.tStart = t  # local t and not account for scr refresh
+        Pos_Priming_Task.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Pos_Priming_Task, 'tStartRefresh')  # time at next scr refresh
+        Pos_Priming_Task.setAutoDraw(True)
+    if Pos_Priming_Task.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Pos_Priming_Task.tStartRefresh + 45-frameTolerance:
+            # keep track of stop time/frame for later
+            Pos_Priming_Task.tStop = t  # not accounting for scr refresh
+            Pos_Priming_Task.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Pos_Priming_Task, 'tStopRefresh')  # time at next scr refresh
+            Pos_Priming_Task.setAutoDraw(False)
+    
+    # *MDMQ_Scale_Pos* updates
+    if MDMQ_Scale_Pos.status == NOT_STARTED and tThisFlip >= 45-frameTolerance:
+        # keep track of start time/frame for later
+        MDMQ_Scale_Pos.frameNStart = frameN  # exact frame index
+        MDMQ_Scale_Pos.tStart = t  # local t and not account for scr refresh
+        MDMQ_Scale_Pos.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(MDMQ_Scale_Pos, 'tStartRefresh')  # time at next scr refresh
+        MDMQ_Scale_Pos.setAutoDraw(True)
+    if MDMQ_Scale_Pos.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > MDMQ_Scale_Pos.tStartRefresh + 60-frameTolerance:
+            # keep track of stop time/frame for later
+            MDMQ_Scale_Pos.tStop = t  # not accounting for scr refresh
+            MDMQ_Scale_Pos.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(MDMQ_Scale_Pos, 'tStopRefresh')  # time at next scr refresh
+            MDMQ_Scale_Pos.setAutoDraw(False)
+    
+    # *Pos_MDMQ_proceed* updates
+    if Pos_MDMQ_proceed.status == NOT_STARTED and t >= 45-frameTolerance:
+        # keep track of start time/frame for later
+        Pos_MDMQ_proceed.frameNStart = frameN  # exact frame index
+        Pos_MDMQ_proceed.tStart = t  # local t and not account for scr refresh
+        Pos_MDMQ_proceed.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Pos_MDMQ_proceed, 'tStartRefresh')  # time at next scr refresh
+        Pos_MDMQ_proceed.status = STARTED
+        # keyboard checking is just starting
+        Pos_MDMQ_proceed.clock.reset()  # now t=0
+    if Pos_MDMQ_proceed.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Pos_MDMQ_proceed.tStartRefresh + 60-frameTolerance:
+            # keep track of stop time/frame for later
+            Pos_MDMQ_proceed.tStop = t  # not accounting for scr refresh
+            Pos_MDMQ_proceed.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Pos_MDMQ_proceed, 'tStopRefresh')  # time at next scr refresh
+            Pos_MDMQ_proceed.status = FINISHED
+    if Pos_MDMQ_proceed.status == STARTED:
+        theseKeys = Pos_MDMQ_proceed.getKeys(keyList=['space'], waitRelease=False)
+        _Pos_MDMQ_proceed_allKeys.extend(theseKeys)
+        if len(_Pos_MDMQ_proceed_allKeys):
+            Pos_MDMQ_proceed.keys = [key.name for key in _Pos_MDMQ_proceed_allKeys]  # storing all keys
+            Pos_MDMQ_proceed.rt = [key.rt for key in _Pos_MDMQ_proceed_allKeys]
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Pos_Prime_MDMQComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Pos_Prime_MDMQ"-------
+for thisComponent in Pos_Prime_MDMQComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+MDMQ_Scale_Pos.addDataToExp(thisExp, 'rows')
+MDMQ_Scale_Pos.autodraw = False
+# check responses
+if Pos_MDMQ_proceed.keys in ['', [], None]:  # No response was made
+    Pos_MDMQ_proceed.keys = None
+thisExp.addData('Pos_MDMQ_proceed.keys',Pos_MDMQ_proceed.keys)
+if Pos_MDMQ_proceed.keys != None:  # we had a response
+    thisExp.addData('Pos_MDMQ_proceed.rt', Pos_MDMQ_proceed.rt)
+thisExp.nextEntry()
+
+# ------Prepare to start Routine "Instructions_Pos_Int"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Int_2.keys = []
+key_resp_Instructions_Neut_Int_2.rt = []
+_key_resp_Instructions_Neut_Int_2_allKeys = []
+# keep track of which components have finished
+Instructions_Pos_IntComponents = [text_Instructions_Neut_Int_2, key_resp_Instructions_Neut_Int_2]
+for thisComponent in Instructions_Pos_IntComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Pos_IntClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Pos_Int"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Pos_IntClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Pos_IntClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Int_2* updates
+    if text_Instructions_Neut_Int_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Int_2.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Int_2.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Int_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Int_2, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Int_2.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Int_2* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Int_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Int_2.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Int_2.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Int_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Int_2, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Int_2.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Int_2.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Int_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Int_2.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Int_2.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Int_2_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Int_2_allKeys):
+            key_resp_Instructions_Neut_Int_2.keys = _key_resp_Instructions_Neut_Int_2_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Int_2.rt = _key_resp_Instructions_Neut_Int_2_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Pos_IntComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Pos_Int"-------
+for thisComponent in Instructions_Pos_IntComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Int_2.started', text_Instructions_Neut_Int_2.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Int_2.stopped', text_Instructions_Neut_Int_2.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Int_2.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Int_2.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Int_2.keys',key_resp_Instructions_Neut_Int_2.keys)
+if key_resp_Instructions_Neut_Int_2.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Int_2.rt', key_resp_Instructions_Neut_Int_2.rt)
+thisExp.addData('key_resp_Instructions_Neut_Int_2.started', key_resp_Instructions_Neut_Int_2.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Int_2.stopped', key_resp_Instructions_Neut_Int_2.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Pos_Int" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Pos_Int = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Intentional_Tasks.xlsx', selection='16:31'),
+    seed=None, name='Pos_Int')
+thisExp.addLoop(Pos_Int)  # add the loop to the experiment
+thisPos_Int = Pos_Int.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisPos_Int.rgb)
+if thisPos_Int != None:
+    for paramName in thisPos_Int:
+        exec('{} = thisPos_Int[paramName]'.format(paramName))
+
+for thisPos_Int in Pos_Int:
+    currentLoop = Pos_Int
+    # abbreviate parameter names if possible (e.g. rgb = thisPos_Int.rgb)
+    if thisPos_Int != None:
+        for paramName in thisPos_Int:
+            exec('{} = thisPos_Int[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Pos_Int_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Pos_Int_Face_Stimuli.setImage(Stimulus)
+    Pos_Int_Distractor.setImage(Dots)
+    Odd_Even_3.keys = []
+    Odd_Even_3.rt = []
+    _Odd_Even_3_allKeys = []
+    Pos_Int_Scale_Resp.keys = []
+    Pos_Int_Scale_Resp.rt = []
+    _Pos_Int_Scale_Resp_allKeys = []
+    # keep track of which components have finished
+    Pos_Int_TaskComponents = [Pos_Int_Face_Stimuli, Pos_Int_Distractor, Odd_Even_3, Scale_2, Pos_Int_Scale_Resp]
+    for thisComponent in Pos_Int_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Pos_Int_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Pos_Int_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Pos_Int_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Pos_Int_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Pos_Int_Face_Stimuli* updates
+        if Pos_Int_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Pos_Int_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Pos_Int_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Pos_Int_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Int_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Pos_Int_Face_Stimuli.setAutoDraw(True)
+        if Pos_Int_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Pos_Int_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Pos_Int_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Pos_Int_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Pos_Int_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Pos_Int_Face_Stimuli.setAutoDraw(False)
+        
+        # *Pos_Int_Distractor* updates
+        if Pos_Int_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Pos_Int_Distractor.frameNStart = frameN  # exact frame index
+            Pos_Int_Distractor.tStart = t  # local t and not account for scr refresh
+            Pos_Int_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Int_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Pos_Int_Distractor.setAutoDraw(True)
+        if Pos_Int_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Pos_Int_Distractor.tStop = t  # not accounting for scr refresh
+                Pos_Int_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Pos_Int_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Pos_Int_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even_3* updates
+        waitOnFlip = False
+        if Odd_Even_3.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_3.frameNStart = frameN  # exact frame index
+            Odd_Even_3.tStart = t  # local t and not account for scr refresh
+            Odd_Even_3.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_3, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_3.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_3.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_3.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even_3.tStop = t  # not accounting for scr refresh
+                Odd_Even_3.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even_3, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even_3.status = FINISHED
+        if Odd_Even_3.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_3.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_3_allKeys.extend(theseKeys)
+            if len(_Odd_Even_3_allKeys):
+                Odd_Even_3.keys = _Odd_Even_3_allKeys[-1].name  # just the last key pressed
+                Odd_Even_3.rt = _Odd_Even_3_allKeys[-1].rt
+        
+        # *Scale_2* updates
+        if Scale_2.status == NOT_STARTED and Pos_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Scale_2.frameNStart = frameN  # exact frame index
+            Scale_2.tStart = t  # local t and not account for scr refresh
+            Scale_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Scale_2, 'tStartRefresh')  # time at next scr refresh
+            Scale_2.setAutoDraw(True)
+        
+        # *Pos_Int_Scale_Resp* updates
+        waitOnFlip = False
+        if Pos_Int_Scale_Resp.status == NOT_STARTED and Pos_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Pos_Int_Scale_Resp.frameNStart = frameN  # exact frame index
+            Pos_Int_Scale_Resp.tStart = t  # local t and not account for scr refresh
+            Pos_Int_Scale_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Int_Scale_Resp, 'tStartRefresh')  # time at next scr refresh
+            Pos_Int_Scale_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Pos_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Pos_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Pos_Int_Scale_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Pos_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Pos_Int_Scale_Resp_allKeys.extend(theseKeys)
+            if len(_Pos_Int_Scale_Resp_allKeys):
+                Pos_Int_Scale_Resp.keys = _Pos_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
+                Pos_Int_Scale_Resp.rt = _Pos_Int_Scale_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Pos_Int_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Pos_Int_Task"-------
+    for thisComponent in Pos_Int_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_3.keys in ['', [], None]:  # No response was made
+        Odd_Even_3.keys = None
+    Pos_Int.addData('Odd_Even_3.keys',Odd_Even_3.keys)
+    if Odd_Even_3.keys != None:  # we had a response
+        Pos_Int.addData('Odd_Even_3.rt', Odd_Even_3.rt)
+    # check responses
+    if Pos_Int_Scale_Resp.keys in ['', [], None]:  # No response was made
+        Pos_Int_Scale_Resp.keys = None
+    Pos_Int.addData('Pos_Int_Scale_Resp.keys',Pos_Int_Scale_Resp.keys)
+    if Pos_Int_Scale_Resp.keys != None:  # we had a response
+        Pos_Int.addData('Pos_Int_Scale_Resp.rt', Pos_Int_Scale_Resp.rt)
+    # the Routine "Pos_Int_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Pos_Int'
+
+
+# ------Prepare to start Routine "Instructions_Pos_Aut"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Aut_2.keys = []
+key_resp_Instructions_Neut_Aut_2.rt = []
+_key_resp_Instructions_Neut_Aut_2_allKeys = []
+# keep track of which components have finished
+Instructions_Pos_AutComponents = [text_Instructions_Neut_Aut_2, key_resp_Instructions_Neut_Aut_2]
+for thisComponent in Instructions_Pos_AutComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Pos_AutClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Pos_Aut"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Pos_AutClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Pos_AutClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Aut_2* updates
+    if text_Instructions_Neut_Aut_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Aut_2.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Aut_2.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Aut_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Aut_2, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Aut_2.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Aut_2* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Aut_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Aut_2.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Aut_2.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Aut_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Aut_2, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Aut_2.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Aut_2.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Aut_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Aut_2.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Aut_2.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Aut_2_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Aut_2_allKeys):
+            key_resp_Instructions_Neut_Aut_2.keys = _key_resp_Instructions_Neut_Aut_2_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Aut_2.rt = _key_resp_Instructions_Neut_Aut_2_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Pos_AutComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Pos_Aut"-------
+for thisComponent in Instructions_Pos_AutComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Aut_2.started', text_Instructions_Neut_Aut_2.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Aut_2.stopped', text_Instructions_Neut_Aut_2.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Aut_2.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Aut_2.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Aut_2.keys',key_resp_Instructions_Neut_Aut_2.keys)
+if key_resp_Instructions_Neut_Aut_2.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Aut_2.rt', key_resp_Instructions_Neut_Aut_2.rt)
+thisExp.addData('key_resp_Instructions_Neut_Aut_2.started', key_resp_Instructions_Neut_Aut_2.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Aut_2.stopped', key_resp_Instructions_Neut_Aut_2.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Pos_Aut" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Pos_Aut = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Automatic_Tasks.xlsx', selection='16:31'),
+    seed=None, name='Pos_Aut')
+thisExp.addLoop(Pos_Aut)  # add the loop to the experiment
+thisPos_Aut = Pos_Aut.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisPos_Aut.rgb)
+if thisPos_Aut != None:
+    for paramName in thisPos_Aut:
+        exec('{} = thisPos_Aut[paramName]'.format(paramName))
+
+for thisPos_Aut in Pos_Aut:
+    currentLoop = Pos_Aut
+    # abbreviate parameter names if possible (e.g. rgb = thisPos_Aut.rgb)
+    if thisPos_Aut != None:
+        for paramName in thisPos_Aut:
+            exec('{} = thisPos_Aut[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Pos_Aut_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Pos_Aut_Face_Stimuli.setImage(Face_Stimulus)
+    Pos_Aut_Distractor.setImage(Dots_image)
+    Odd_Even_4.keys = []
+    Odd_Even_4.rt = []
+    _Odd_Even_4_allKeys = []
+    Pos_Aut_Set.setImage(Face_Set)
+    Pos_Aut_Set_Resp.keys = []
+    Pos_Aut_Set_Resp.rt = []
+    _Pos_Aut_Set_Resp_allKeys = []
+    # keep track of which components have finished
+    Pos_Aut_TaskComponents = [Pos_Aut_Face_Stimuli, Pos_Aut_Distractor, Odd_Even_4, Pos_Aut_Set, Pos_Aut_Set_Resp]
+    for thisComponent in Pos_Aut_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Pos_Aut_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Pos_Aut_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Pos_Aut_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Pos_Aut_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Pos_Aut_Face_Stimuli* updates
+        if Pos_Aut_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Pos_Aut_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Pos_Aut_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Pos_Aut_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Aut_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Pos_Aut_Face_Stimuli.setAutoDraw(True)
+        if Pos_Aut_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Pos_Aut_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Pos_Aut_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Pos_Aut_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Pos_Aut_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Pos_Aut_Face_Stimuli.setAutoDraw(False)
+        
+        # *Pos_Aut_Distractor* updates
+        if Pos_Aut_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Pos_Aut_Distractor.frameNStart = frameN  # exact frame index
+            Pos_Aut_Distractor.tStart = t  # local t and not account for scr refresh
+            Pos_Aut_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Aut_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Pos_Aut_Distractor.setAutoDraw(True)
+        if Pos_Aut_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Pos_Aut_Distractor.tStop = t  # not accounting for scr refresh
+                Pos_Aut_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Pos_Aut_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Pos_Aut_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even_4* updates
+        waitOnFlip = False
+        if Odd_Even_4.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_4.frameNStart = frameN  # exact frame index
+            Odd_Even_4.tStart = t  # local t and not account for scr refresh
+            Odd_Even_4.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_4, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_4.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_4.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_4.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_4.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even_4.tStop = t  # not accounting for scr refresh
+                Odd_Even_4.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even_4, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even_4.status = FINISHED
+        if Odd_Even_4.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_4.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_4_allKeys.extend(theseKeys)
+            if len(_Odd_Even_4_allKeys):
+                Odd_Even_4.keys = _Odd_Even_4_allKeys[-1].name  # just the last key pressed
+                Odd_Even_4.rt = _Odd_Even_4_allKeys[-1].rt
+        
+        # *Pos_Aut_Set* updates
+        if Pos_Aut_Set.status == NOT_STARTED and Pos_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Pos_Aut_Set.frameNStart = frameN  # exact frame index
+            Pos_Aut_Set.tStart = t  # local t and not account for scr refresh
+            Pos_Aut_Set.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Aut_Set, 'tStartRefresh')  # time at next scr refresh
+            Pos_Aut_Set.setAutoDraw(True)
+        
+        # *Pos_Aut_Set_Resp* updates
+        waitOnFlip = False
+        if Pos_Aut_Set_Resp.status == NOT_STARTED and Pos_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Pos_Aut_Set_Resp.frameNStart = frameN  # exact frame index
+            Pos_Aut_Set_Resp.tStart = t  # local t and not account for scr refresh
+            Pos_Aut_Set_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Pos_Aut_Set_Resp, 'tStartRefresh')  # time at next scr refresh
+            Pos_Aut_Set_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Pos_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Pos_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Pos_Aut_Set_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Pos_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Pos_Aut_Set_Resp_allKeys.extend(theseKeys)
+            if len(_Pos_Aut_Set_Resp_allKeys):
+                Pos_Aut_Set_Resp.keys = _Pos_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
+                Pos_Aut_Set_Resp.rt = _Pos_Aut_Set_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Pos_Aut_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Pos_Aut_Task"-------
+    for thisComponent in Pos_Aut_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_4.keys in ['', [], None]:  # No response was made
+        Odd_Even_4.keys = None
+    Pos_Aut.addData('Odd_Even_4.keys',Odd_Even_4.keys)
+    if Odd_Even_4.keys != None:  # we had a response
+        Pos_Aut.addData('Odd_Even_4.rt', Odd_Even_4.rt)
+    # check responses
+    if Pos_Aut_Set_Resp.keys in ['', [], None]:  # No response was made
+        Pos_Aut_Set_Resp.keys = None
+    Pos_Aut.addData('Pos_Aut_Set_Resp.keys',Pos_Aut_Set_Resp.keys)
+    if Pos_Aut_Set_Resp.keys != None:  # we had a response
+        Pos_Aut.addData('Pos_Aut_Set_Resp.rt', Pos_Aut_Set_Resp.rt)
+    # the Routine "Pos_Aut_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Pos_Aut'
+
+
+# ------Prepare to start Routine "Instructions_Neg_Prime"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Pos_Prime_2.keys = []
+key_resp_Instructions_Pos_Prime_2.rt = []
+_key_resp_Instructions_Pos_Prime_2_allKeys = []
+# keep track of which components have finished
+Instructions_Neg_PrimeComponents = [text_2, key_resp_Instructions_Pos_Prime_2]
+for thisComponent in Instructions_Neg_PrimeComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Neg_PrimeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Neg_Prime"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Neg_PrimeClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Neg_PrimeClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_2* updates
+    if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_2.frameNStart = frameN  # exact frame index
+        text_2.tStart = t  # local t and not account for scr refresh
+        text_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+        text_2.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Pos_Prime_2* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Pos_Prime_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Pos_Prime_2.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Pos_Prime_2.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Pos_Prime_2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Pos_Prime_2, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Pos_Prime_2.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Pos_Prime_2.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Pos_Prime_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Pos_Prime_2.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Pos_Prime_2.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Pos_Prime_2_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Pos_Prime_2_allKeys):
+            key_resp_Instructions_Pos_Prime_2.keys = _key_resp_Instructions_Pos_Prime_2_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Pos_Prime_2.rt = _key_resp_Instructions_Pos_Prime_2_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Neg_PrimeComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Neg_Prime"-------
+for thisComponent in Instructions_Neg_PrimeComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_2.started', text_2.tStartRefresh)
+thisExp.addData('text_2.stopped', text_2.tStopRefresh)
+# check responses
+if key_resp_Instructions_Pos_Prime_2.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Pos_Prime_2.keys = None
+thisExp.addData('key_resp_Instructions_Pos_Prime_2.keys',key_resp_Instructions_Pos_Prime_2.keys)
+if key_resp_Instructions_Pos_Prime_2.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Pos_Prime_2.rt', key_resp_Instructions_Pos_Prime_2.rt)
+thisExp.addData('key_resp_Instructions_Pos_Prime_2.started', key_resp_Instructions_Pos_Prime_2.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Pos_Prime_2.stopped', key_resp_Instructions_Pos_Prime_2.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Neg_Prime" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# ------Prepare to start Routine "Neg_Prime_MDMQ"-------
+continueRoutine = True
+routineTimer.add(105.000000)
+# update component parameters for each repeat
+Neg_MDMQ_proceed.keys = []
+Neg_MDMQ_proceed.rt = []
+_Neg_MDMQ_proceed_allKeys = []
+# keep track of which components have finished
+Neg_Prime_MDMQComponents = [Neg_Priming_Task, MDMQ_Scale_Neg, Neg_MDMQ_proceed]
+for thisComponent in Neg_Prime_MDMQComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Neg_Prime_MDMQClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Neg_Prime_MDMQ"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = Neg_Prime_MDMQClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Neg_Prime_MDMQClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *Neg_Priming_Task* updates
+    if Neg_Priming_Task.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        Neg_Priming_Task.frameNStart = frameN  # exact frame index
+        Neg_Priming_Task.tStart = t  # local t and not account for scr refresh
+        Neg_Priming_Task.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Neg_Priming_Task, 'tStartRefresh')  # time at next scr refresh
+        Neg_Priming_Task.setAutoDraw(True)
+    if Neg_Priming_Task.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Neg_Priming_Task.tStartRefresh + 45-frameTolerance:
+            # keep track of stop time/frame for later
+            Neg_Priming_Task.tStop = t  # not accounting for scr refresh
+            Neg_Priming_Task.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Neg_Priming_Task, 'tStopRefresh')  # time at next scr refresh
+            Neg_Priming_Task.setAutoDraw(False)
+    
+    # *MDMQ_Scale_Neg* updates
+    if MDMQ_Scale_Neg.status == NOT_STARTED and tThisFlip >= 45-frameTolerance:
+        # keep track of start time/frame for later
+        MDMQ_Scale_Neg.frameNStart = frameN  # exact frame index
+        MDMQ_Scale_Neg.tStart = t  # local t and not account for scr refresh
+        MDMQ_Scale_Neg.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(MDMQ_Scale_Neg, 'tStartRefresh')  # time at next scr refresh
+        MDMQ_Scale_Neg.setAutoDraw(True)
+    if MDMQ_Scale_Neg.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > MDMQ_Scale_Neg.tStartRefresh + 60-frameTolerance:
+            # keep track of stop time/frame for later
+            MDMQ_Scale_Neg.tStop = t  # not accounting for scr refresh
+            MDMQ_Scale_Neg.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(MDMQ_Scale_Neg, 'tStopRefresh')  # time at next scr refresh
+            MDMQ_Scale_Neg.setAutoDraw(False)
+    
+    # *Neg_MDMQ_proceed* updates
+    if Neg_MDMQ_proceed.status == NOT_STARTED and t >= 45-frameTolerance:
+        # keep track of start time/frame for later
+        Neg_MDMQ_proceed.frameNStart = frameN  # exact frame index
+        Neg_MDMQ_proceed.tStart = t  # local t and not account for scr refresh
+        Neg_MDMQ_proceed.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Neg_MDMQ_proceed, 'tStartRefresh')  # time at next scr refresh
+        Neg_MDMQ_proceed.status = STARTED
+        # keyboard checking is just starting
+        Neg_MDMQ_proceed.clock.reset()  # now t=0
+    if Neg_MDMQ_proceed.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > Neg_MDMQ_proceed.tStartRefresh + 60-frameTolerance:
+            # keep track of stop time/frame for later
+            Neg_MDMQ_proceed.tStop = t  # not accounting for scr refresh
+            Neg_MDMQ_proceed.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(Neg_MDMQ_proceed, 'tStopRefresh')  # time at next scr refresh
+            Neg_MDMQ_proceed.status = FINISHED
+    if Neg_MDMQ_proceed.status == STARTED:
+        theseKeys = Neg_MDMQ_proceed.getKeys(keyList=['space'], waitRelease=False)
+        _Neg_MDMQ_proceed_allKeys.extend(theseKeys)
+        if len(_Neg_MDMQ_proceed_allKeys):
+            Neg_MDMQ_proceed.keys = [key.name for key in _Neg_MDMQ_proceed_allKeys]  # storing all keys
+            Neg_MDMQ_proceed.rt = [key.rt for key in _Neg_MDMQ_proceed_allKeys]
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Neg_Prime_MDMQComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Neg_Prime_MDMQ"-------
+for thisComponent in Neg_Prime_MDMQComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+MDMQ_Scale_Neg.addDataToExp(thisExp, 'rows')
+MDMQ_Scale_Neg.autodraw = False
+# check responses
+if Neg_MDMQ_proceed.keys in ['', [], None]:  # No response was made
+    Neg_MDMQ_proceed.keys = None
+thisExp.addData('Neg_MDMQ_proceed.keys',Neg_MDMQ_proceed.keys)
+if Neg_MDMQ_proceed.keys != None:  # we had a response
+    thisExp.addData('Neg_MDMQ_proceed.rt', Neg_MDMQ_proceed.rt)
+thisExp.nextEntry()
+
+# ------Prepare to start Routine "Instructions_Neg_Int"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Int_3.keys = []
+key_resp_Instructions_Neut_Int_3.rt = []
+_key_resp_Instructions_Neut_Int_3_allKeys = []
+# keep track of which components have finished
+Instructions_Neg_IntComponents = [text_Instructions_Neut_Int_3, key_resp_Instructions_Neut_Int_3]
+for thisComponent in Instructions_Neg_IntComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Neg_IntClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Neg_Int"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Neg_IntClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Neg_IntClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Int_3* updates
+    if text_Instructions_Neut_Int_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Int_3.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Int_3.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Int_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Int_3, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Int_3.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Int_3* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Int_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Int_3.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Int_3.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Int_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Int_3, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Int_3.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Int_3.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Int_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Int_3.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Int_3.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Int_3_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Int_3_allKeys):
+            key_resp_Instructions_Neut_Int_3.keys = _key_resp_Instructions_Neut_Int_3_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Int_3.rt = _key_resp_Instructions_Neut_Int_3_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Neg_IntComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Neg_Int"-------
+for thisComponent in Instructions_Neg_IntComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Int_3.started', text_Instructions_Neut_Int_3.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Int_3.stopped', text_Instructions_Neut_Int_3.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Int_3.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Int_3.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Int_3.keys',key_resp_Instructions_Neut_Int_3.keys)
+if key_resp_Instructions_Neut_Int_3.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Int_3.rt', key_resp_Instructions_Neut_Int_3.rt)
+thisExp.addData('key_resp_Instructions_Neut_Int_3.started', key_resp_Instructions_Neut_Int_3.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Int_3.stopped', key_resp_Instructions_Neut_Int_3.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Neg_Int" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Neg_Int = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Intentional_Tasks.xlsx', selection='32:47'),
+    seed=None, name='Neg_Int')
+thisExp.addLoop(Neg_Int)  # add the loop to the experiment
+thisNeg_Int = Neg_Int.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisNeg_Int.rgb)
+if thisNeg_Int != None:
+    for paramName in thisNeg_Int:
+        exec('{} = thisNeg_Int[paramName]'.format(paramName))
+
+for thisNeg_Int in Neg_Int:
+    currentLoop = Neg_Int
+    # abbreviate parameter names if possible (e.g. rgb = thisNeg_Int.rgb)
+    if thisNeg_Int != None:
+        for paramName in thisNeg_Int:
+            exec('{} = thisNeg_Int[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Neg_Int_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Neg_Int_Face_Stimuli.setImage(Stimulus)
+    Neg_Int_Distractor.setImage(Dots)
+    Odd_Even_5.keys = []
+    Odd_Even_5.rt = []
+    _Odd_Even_5_allKeys = []
+    Neg_Int_Scale_Resp.keys = []
+    Neg_Int_Scale_Resp.rt = []
+    _Neg_Int_Scale_Resp_allKeys = []
+    # keep track of which components have finished
+    Neg_Int_TaskComponents = [Neg_Int_Face_Stimuli, Neg_Int_Distractor, Odd_Even_5, Scale_3, Neg_Int_Scale_Resp]
+    for thisComponent in Neg_Int_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Neg_Int_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Neg_Int_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Neg_Int_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Neg_Int_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Neg_Int_Face_Stimuli* updates
+        if Neg_Int_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Neg_Int_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Neg_Int_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Neg_Int_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Int_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Neg_Int_Face_Stimuli.setAutoDraw(True)
+        if Neg_Int_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Neg_Int_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Neg_Int_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Neg_Int_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neg_Int_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Neg_Int_Face_Stimuli.setAutoDraw(False)
+        
+        # *Neg_Int_Distractor* updates
+        if Neg_Int_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Neg_Int_Distractor.frameNStart = frameN  # exact frame index
+            Neg_Int_Distractor.tStart = t  # local t and not account for scr refresh
+            Neg_Int_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Int_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Neg_Int_Distractor.setAutoDraw(True)
+        if Neg_Int_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Neg_Int_Distractor.tStop = t  # not accounting for scr refresh
+                Neg_Int_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neg_Int_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Neg_Int_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even_5* updates
+        waitOnFlip = False
+        if Odd_Even_5.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_5.frameNStart = frameN  # exact frame index
+            Odd_Even_5.tStart = t  # local t and not account for scr refresh
+            Odd_Even_5.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_5, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_5.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_5.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_5.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_5.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even_5.tStop = t  # not accounting for scr refresh
+                Odd_Even_5.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even_5, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even_5.status = FINISHED
+        if Odd_Even_5.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_5.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_5_allKeys.extend(theseKeys)
+            if len(_Odd_Even_5_allKeys):
+                Odd_Even_5.keys = _Odd_Even_5_allKeys[-1].name  # just the last key pressed
+                Odd_Even_5.rt = _Odd_Even_5_allKeys[-1].rt
+        
+        # *Scale_3* updates
+        if Scale_3.status == NOT_STARTED and Neg_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Scale_3.frameNStart = frameN  # exact frame index
+            Scale_3.tStart = t  # local t and not account for scr refresh
+            Scale_3.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Scale_3, 'tStartRefresh')  # time at next scr refresh
+            Scale_3.setAutoDraw(True)
+        
+        # *Neg_Int_Scale_Resp* updates
+        waitOnFlip = False
+        if Neg_Int_Scale_Resp.status == NOT_STARTED and Neg_Int_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neg_Int_Scale_Resp.frameNStart = frameN  # exact frame index
+            Neg_Int_Scale_Resp.tStart = t  # local t and not account for scr refresh
+            Neg_Int_Scale_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Int_Scale_Resp, 'tStartRefresh')  # time at next scr refresh
+            Neg_Int_Scale_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Neg_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Neg_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Neg_Int_Scale_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Neg_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Neg_Int_Scale_Resp_allKeys.extend(theseKeys)
+            if len(_Neg_Int_Scale_Resp_allKeys):
+                Neg_Int_Scale_Resp.keys = _Neg_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
+                Neg_Int_Scale_Resp.rt = _Neg_Int_Scale_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Neg_Int_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Neg_Int_Task"-------
+    for thisComponent in Neg_Int_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_5.keys in ['', [], None]:  # No response was made
+        Odd_Even_5.keys = None
+    Neg_Int.addData('Odd_Even_5.keys',Odd_Even_5.keys)
+    if Odd_Even_5.keys != None:  # we had a response
+        Neg_Int.addData('Odd_Even_5.rt', Odd_Even_5.rt)
+    # check responses
+    if Neg_Int_Scale_Resp.keys in ['', [], None]:  # No response was made
+        Neg_Int_Scale_Resp.keys = None
+    Neg_Int.addData('Neg_Int_Scale_Resp.keys',Neg_Int_Scale_Resp.keys)
+    if Neg_Int_Scale_Resp.keys != None:  # we had a response
+        Neg_Int.addData('Neg_Int_Scale_Resp.rt', Neg_Int_Scale_Resp.rt)
+    # the Routine "Neg_Int_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Neg_Int'
+
+
+# ------Prepare to start Routine "Instructions_Neg_Aut"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp_Instructions_Neut_Aut_3.keys = []
+key_resp_Instructions_Neut_Aut_3.rt = []
+_key_resp_Instructions_Neut_Aut_3_allKeys = []
+# keep track of which components have finished
+Instructions_Neg_AutComponents = [text_Instructions_Neut_Aut_3, key_resp_Instructions_Neut_Aut_3]
+for thisComponent in Instructions_Neg_AutComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Neg_AutClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Neg_Aut"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Neg_AutClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Neg_AutClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *text_Instructions_Neut_Aut_3* updates
+    if text_Instructions_Neut_Aut_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        text_Instructions_Neut_Aut_3.frameNStart = frameN  # exact frame index
+        text_Instructions_Neut_Aut_3.tStart = t  # local t and not account for scr refresh
+        text_Instructions_Neut_Aut_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(text_Instructions_Neut_Aut_3, 'tStartRefresh')  # time at next scr refresh
+        text_Instructions_Neut_Aut_3.setAutoDraw(True)
+    
+    # *key_resp_Instructions_Neut_Aut_3* updates
+    waitOnFlip = False
+    if key_resp_Instructions_Neut_Aut_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp_Instructions_Neut_Aut_3.frameNStart = frameN  # exact frame index
+        key_resp_Instructions_Neut_Aut_3.tStart = t  # local t and not account for scr refresh
+        key_resp_Instructions_Neut_Aut_3.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp_Instructions_Neut_Aut_3, 'tStartRefresh')  # time at next scr refresh
+        key_resp_Instructions_Neut_Aut_3.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp_Instructions_Neut_Aut_3.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp_Instructions_Neut_Aut_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp_Instructions_Neut_Aut_3.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp_Instructions_Neut_Aut_3.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_Instructions_Neut_Aut_3_allKeys.extend(theseKeys)
+        if len(_key_resp_Instructions_Neut_Aut_3_allKeys):
+            key_resp_Instructions_Neut_Aut_3.keys = _key_resp_Instructions_Neut_Aut_3_allKeys[-1].name  # just the last key pressed
+            key_resp_Instructions_Neut_Aut_3.rt = _key_resp_Instructions_Neut_Aut_3_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Neg_AutComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Neg_Aut"-------
+for thisComponent in Instructions_Neg_AutComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('text_Instructions_Neut_Aut_3.started', text_Instructions_Neut_Aut_3.tStartRefresh)
+thisExp.addData('text_Instructions_Neut_Aut_3.stopped', text_Instructions_Neut_Aut_3.tStopRefresh)
+# check responses
+if key_resp_Instructions_Neut_Aut_3.keys in ['', [], None]:  # No response was made
+    key_resp_Instructions_Neut_Aut_3.keys = None
+thisExp.addData('key_resp_Instructions_Neut_Aut_3.keys',key_resp_Instructions_Neut_Aut_3.keys)
+if key_resp_Instructions_Neut_Aut_3.keys != None:  # we had a response
+    thisExp.addData('key_resp_Instructions_Neut_Aut_3.rt', key_resp_Instructions_Neut_Aut_3.rt)
+thisExp.addData('key_resp_Instructions_Neut_Aut_3.started', key_resp_Instructions_Neut_Aut_3.tStartRefresh)
+thisExp.addData('key_resp_Instructions_Neut_Aut_3.stopped', key_resp_Instructions_Neut_Aut_3.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Neg_Aut" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+Neg_Aut = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Automatic_Tasks.xlsx', selection='32:47'),
+    seed=None, name='Neg_Aut')
+thisExp.addLoop(Neg_Aut)  # add the loop to the experiment
+thisNeg_Aut = Neg_Aut.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisNeg_Aut.rgb)
+if thisNeg_Aut != None:
+    for paramName in thisNeg_Aut:
+        exec('{} = thisNeg_Aut[paramName]'.format(paramName))
+
+for thisNeg_Aut in Neg_Aut:
+    currentLoop = Neg_Aut
+    # abbreviate parameter names if possible (e.g. rgb = thisNeg_Aut.rgb)
+    if thisNeg_Aut != None:
+        for paramName in thisNeg_Aut:
+            exec('{} = thisNeg_Aut[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Neg_Aut_Task"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Neg_Aut_Face_Stimuli.setImage(Face_Stimulus)
+    Neg_Aut_Distractor.setImage(Dots_image)
+    Odd_Even_6.keys = []
+    Odd_Even_6.rt = []
+    _Odd_Even_6_allKeys = []
+    Neg_Aut_Set.setImage(Face_Set)
+    Neg_Aut_Set_Resp.keys = []
+    Neg_Aut_Set_Resp.rt = []
+    _Neg_Aut_Set_Resp_allKeys = []
+    # keep track of which components have finished
+    Neg_Aut_TaskComponents = [Neg_Aut_Face_Stimuli, Neg_Aut_Distractor, Odd_Even_6, Neg_Aut_Set, Neg_Aut_Set_Resp]
+    for thisComponent in Neg_Aut_TaskComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Neg_Aut_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Neg_Aut_Task"-------
+    while continueRoutine:
+        # get current time
+        t = Neg_Aut_TaskClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Neg_Aut_TaskClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Neg_Aut_Face_Stimuli* updates
+        if Neg_Aut_Face_Stimuli.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            Neg_Aut_Face_Stimuli.frameNStart = frameN  # exact frame index
+            Neg_Aut_Face_Stimuli.tStart = t  # local t and not account for scr refresh
+            Neg_Aut_Face_Stimuli.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Aut_Face_Stimuli, 'tStartRefresh')  # time at next scr refresh
+            Neg_Aut_Face_Stimuli.setAutoDraw(True)
+        if Neg_Aut_Face_Stimuli.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > Neg_Aut_Face_Stimuli.tStartRefresh + 3-frameTolerance:
+                # keep track of stop time/frame for later
+                Neg_Aut_Face_Stimuli.tStop = t  # not accounting for scr refresh
+                Neg_Aut_Face_Stimuli.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neg_Aut_Face_Stimuli, 'tStopRefresh')  # time at next scr refresh
+                Neg_Aut_Face_Stimuli.setAutoDraw(False)
+        
+        # *Neg_Aut_Distractor* updates
+        if Neg_Aut_Distractor.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Neg_Aut_Distractor.frameNStart = frameN  # exact frame index
+            Neg_Aut_Distractor.tStart = t  # local t and not account for scr refresh
+            Neg_Aut_Distractor.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Aut_Distractor, 'tStartRefresh')  # time at next scr refresh
+            Neg_Aut_Distractor.setAutoDraw(True)
+        if Neg_Aut_Distractor.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Neg_Aut_Distractor.tStop = t  # not accounting for scr refresh
+                Neg_Aut_Distractor.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Neg_Aut_Distractor, 'tStopRefresh')  # time at next scr refresh
+                Neg_Aut_Distractor.setAutoDraw(False)
+        
+        # *Odd_Even_6* updates
+        waitOnFlip = False
+        if Odd_Even_6.status == NOT_STARTED and tThisFlip >= 3-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_6.frameNStart = frameN  # exact frame index
+            Odd_Even_6.tStart = t  # local t and not account for scr refresh
+            Odd_Even_6.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_6, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_6.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_6.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_6.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_6.status == STARTED:
+            if bool(event.getKeys(keyList=['left','right'])):
+                # keep track of stop time/frame for later
+                Odd_Even_6.tStop = t  # not accounting for scr refresh
+                Odd_Even_6.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(Odd_Even_6, 'tStopRefresh')  # time at next scr refresh
+                Odd_Even_6.status = FINISHED
+        if Odd_Even_6.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_6.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_6_allKeys.extend(theseKeys)
+            if len(_Odd_Even_6_allKeys):
+                Odd_Even_6.keys = _Odd_Even_6_allKeys[-1].name  # just the last key pressed
+                Odd_Even_6.rt = _Odd_Even_6_allKeys[-1].rt
+        
+        # *Neg_Aut_Set* updates
+        if Neg_Aut_Set.status == NOT_STARTED and Neg_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neg_Aut_Set.frameNStart = frameN  # exact frame index
+            Neg_Aut_Set.tStart = t  # local t and not account for scr refresh
+            Neg_Aut_Set.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Aut_Set, 'tStartRefresh')  # time at next scr refresh
+            Neg_Aut_Set.setAutoDraw(True)
+        
+        # *Neg_Aut_Set_Resp* updates
+        waitOnFlip = False
+        if Neg_Aut_Set_Resp.status == NOT_STARTED and Neg_Aut_Distractor.status==FINISHED:
+            # keep track of start time/frame for later
+            Neg_Aut_Set_Resp.frameNStart = frameN  # exact frame index
+            Neg_Aut_Set_Resp.tStart = t  # local t and not account for scr refresh
+            Neg_Aut_Set_Resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Neg_Aut_Set_Resp, 'tStartRefresh')  # time at next scr refresh
+            Neg_Aut_Set_Resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Neg_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Neg_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Neg_Aut_Set_Resp.status == STARTED and not waitOnFlip:
+            theseKeys = Neg_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            _Neg_Aut_Set_Resp_allKeys.extend(theseKeys)
+            if len(_Neg_Aut_Set_Resp_allKeys):
+                Neg_Aut_Set_Resp.keys = _Neg_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
+                Neg_Aut_Set_Resp.rt = _Neg_Aut_Set_Resp_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Neg_Aut_TaskComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Neg_Aut_Task"-------
+    for thisComponent in Neg_Aut_TaskComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_6.keys in ['', [], None]:  # No response was made
+        Odd_Even_6.keys = None
+    Neg_Aut.addData('Odd_Even_6.keys',Odd_Even_6.keys)
+    if Odd_Even_6.keys != None:  # we had a response
+        Neg_Aut.addData('Odd_Even_6.rt', Odd_Even_6.rt)
+    # check responses
+    if Neg_Aut_Set_Resp.keys in ['', [], None]:  # No response was made
+        Neg_Aut_Set_Resp.keys = None
+    Neg_Aut.addData('Neg_Aut_Set_Resp.keys',Neg_Aut_Set_Resp.keys)
+    if Neg_Aut_Set_Resp.keys != None:  # we had a response
+        Neg_Aut.addData('Neg_Aut_Set_Resp.rt', Neg_Aut_Set_Resp.rt)
+    # the Routine "Neg_Aut_Task" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'Neg_Aut'
+
+
+# Flip one final time so any remaining win.callOnFlip() 
+# and win.timeOnFlip() tasks get executed before quitting
+win.flip()
+
+# these shouldn't be strictly necessary (should auto-save)
+thisExp.saveAsWideText(filename+'.csv', delim='auto')
+thisExp.saveAsPickle(filename)
+logging.flush()
+# make sure everything is closed down
+thisExp.abort()  # or data files will save again on exit
+win.close()
+core.quit()
+
+
+
+#program over. Data files should be automaticaly saved in a special folder 
+#created by psychopy. 
