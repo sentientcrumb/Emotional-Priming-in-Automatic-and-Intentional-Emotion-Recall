@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on Tue Nov 23 14:30:29 2021
+    on Mon Nov 29 14:39:22 2021
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -86,7 +86,7 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "WelcomeScreen"
 WelcomeScreenClock = core.Clock()
 WelcomeText = visual.TextStim(win=win, name='WelcomeText',
-    text='Welcome to the emotional memory task!\n\nIn this experiment, you will have multiple tasks. The specific instructions for each individual task will be provided before you begin.\n\nPress the space bar when you are ready to continue.',
+    text='Welcome to the facial rating task!\n\nIn this experiment, you will have multiple tasks. The specific instructions for each individual task will be provided before you begin.\n\nPress the space bar when you are ready to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -94,10 +94,33 @@ WelcomeText = visual.TextStim(win=win, name='WelcomeText',
     depth=0.0);
 key_resp_WelcomeText = keyboard.Keyboard()
 
+# Initialize components for Routine "Instructions_Dot_Task"
+Instructions_Dot_TaskClock = core.Clock()
+Dot_Instructions = visual.TextStim(win=win, name='Dot_Instructions',
+    text='This is a practice task. \nYou will be shown dots. \nIf there is an ODD number of dots, press the ‘LEFT’ key. \nIf there is an EVEN number of dots, press the ‘RIGHT’ key.\n\nPress SPACE to begin.',
+    font='Open Sans',
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+key_resp = keyboard.Keyboard()
+
+# Initialize components for Routine "Dot_Task_Practice"
+Dot_Task_PracticeClock = core.Clock()
+Dots_Practice = visual.ImageStim(
+    win=win,
+    name='Dots_Practice', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(1, 0.75),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=0.0)
+Odd_Even_7 = keyboard.Keyboard()
+
 # Initialize components for Routine "Instructions_Neut_Int"
 Instructions_Neut_IntClock = core.Clock()
 text_Instructions_Neut_Int = visual.TextStim(win=win, name='text_Instructions_Neut_Int',
-    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nRemember to ONLY use the same hand when pressing arrows or numbers. \n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nPlease use the SAME HAND when pressing arrows or numbers. \n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -127,7 +150,7 @@ Odd_Even = keyboard.Keyboard()
 Scale = visual.ImageStim(
     win=win,
     name='Scale', 
-    image='int_scale.jpg', mask=None,
+    image='Updated_Int_Scale.png', mask=None,
     ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
@@ -137,7 +160,7 @@ Neut_Int_Scale_Resp = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Neut_Aut"
 Instructions_Neut_AutClock = core.Clock()
 text_Instructions_Neut_Aut = visual.TextStim(win=win, name='text_Instructions_Neut_Aut',
-    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\nRemember to ONLY use the same hand when pressing arrows or numbers. \n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -177,7 +200,7 @@ Neut_Aut_Set_Resp = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Pos_Prime"
 Instructions_Pos_PrimeClock = core.Clock()
 text = visual.TextStim(win=win, name='text',
-    text='In the following task, you will be emotionally primed. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
+    text='In the following task, you will be asked to recall some memories. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -188,9 +211,9 @@ key_resp_Instructions_Pos_Prime = keyboard.Keyboard()
 # Initialize components for Routine "Pos_Prime_MDMQ"
 Pos_Prime_MDMQClock = core.Clock()
 Pos_Priming_Task = visual.TextStim(win=win, name='Pos_Priming_Task',
-    text='Positive Priming Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid positive memory.\n\nAny positive instance is valid, there is no restriction. ',
+    text='Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid positive memory.\n\nAny positive instance is valid, there is no restriction. ',
     font='Open Sans',
-    pos=(0, 0), height=0.02, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -212,7 +235,7 @@ Pos_MDMQ_proceed = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Pos_Int"
 Instructions_Pos_IntClock = core.Clock()
 text_Instructions_Neut_Int_2 = visual.TextStim(win=win, name='text_Instructions_Neut_Int_2',
-    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\nPlease be sure to use the SAME HAND for both tasks (to press numbers and arrows)\n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -242,7 +265,7 @@ Odd_Even_3 = keyboard.Keyboard()
 Scale_2 = visual.ImageStim(
     win=win,
     name='Scale_2', 
-    image='int_scale.jpg', mask=None,
+    image='Updated_Int_Scale.png', mask=None,
     ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
@@ -252,7 +275,7 @@ Pos_Int_Scale_Resp = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Pos_Aut"
 Instructions_Pos_AutClock = core.Clock()
 text_Instructions_Neut_Aut_2 = visual.TextStim(win=win, name='text_Instructions_Neut_Aut_2',
-    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\nPlease be sure to use the SAME HAND for both tasks (to press numbers and arrows)\n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -292,7 +315,7 @@ Pos_Aut_Set_Resp = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Neg_Prime"
 Instructions_Neg_PrimeClock = core.Clock()
 text_2 = visual.TextStim(win=win, name='text_2',
-    text='In the following task, you will be emotionally primed. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
+    text='In the following task, you will be asked to recall another memory. There will be a short 16-question scale subsequently provided, inquiring about your current emotional state.\n\nOnce you have completed the scale, press the ‘space’ bar to continue. Press the ‘space’ bar to advance from this page as well.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -303,9 +326,9 @@ key_resp_Instructions_Pos_Prime_2 = keyboard.Keyboard()
 # Initialize components for Routine "Neg_Prime_MDMQ"
 Neg_Prime_MDMQClock = core.Clock()
 Neg_Priming_Task = visual.TextStim(win=win, name='Neg_Priming_Task',
-    text='Negative Priming Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid negative memory.\n\nAny negative instance is valid, there is no restriction. ',
+    text='Task:\n\nThis task will last 45 seconds. \n\nDuring this time, please recall and experience \nas strongly as you can, a vivid negative memory.\n\nAny negative instance is valid, there is no restriction. ',
     font='Open Sans',
-    pos=(0, 0), height=0.02, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -327,7 +350,7 @@ Neg_MDMQ_proceed = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Neg_Int"
 Instructions_Neg_IntClock = core.Clock()
 text_Instructions_Neut_Int_3 = visual.TextStim(win=win, name='text_Instructions_Neut_Int_3',
-    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale. Please indicate, on a scale of 1 to 7, the emotional level of the face you had previously been shown, using the number keys on your keyboard (1 being the most negative, 4 being neutral, and 7 being the most positive).\nPlease be sure to use the SAME HAND for both tasks (to press numbers and arrows)\n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -357,7 +380,7 @@ Odd_Even_5 = keyboard.Keyboard()
 Scale_3 = visual.ImageStim(
     win=win,
     name='Scale_3', 
-    image='int_scale.jpg', mask=None,
+    image='Updated_Int_Scale.png', mask=None,
     ori=0.0, pos=(0, -0.25), size=(1.2, 0.4),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
@@ -367,7 +390,7 @@ Neg_Int_Scale_Resp = keyboard.Keyboard()
 # Initialize components for Routine "Instructions_Neg_Aut"
 Instructions_Neg_AutClock = core.Clock()
 text_Instructions_Neut_Aut_3 = visual.TextStim(win=win, name='text_Instructions_Neut_Aut_3',
-    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPress the ‘space’ bar to continue.',
+    text='In the following task, you will be shown a face, then shown dots once again. Count the number of dots and indicate on your keyboard whether it is an odd number (press ‘left’ key) or even number (press ‘right’ key).\n\nAfterwards, you will be shown a scale, with faces on it this time. Please indicate, based on the faces presented ranging from 1 to 7,the face you had previously been shown. This can be done using the number keys on your keyboard.\n\nPlease be sure to use the SAME HAND for both tasks (to press numbers and arrows).\n\nPress the ‘space’ bar to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -503,6 +526,218 @@ thisExp.addData('key_resp_WelcomeText.stopped', key_resp_WelcomeText.tStopRefres
 thisExp.nextEntry()
 # the Routine "WelcomeScreen" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
+# ------Prepare to start Routine "Instructions_Dot_Task"-------
+continueRoutine = True
+# update component parameters for each repeat
+key_resp.keys = []
+key_resp.rt = []
+_key_resp_allKeys = []
+# keep track of which components have finished
+Instructions_Dot_TaskComponents = [Dot_Instructions, key_resp]
+for thisComponent in Instructions_Dot_TaskComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+Instructions_Dot_TaskClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "Instructions_Dot_Task"-------
+while continueRoutine:
+    # get current time
+    t = Instructions_Dot_TaskClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=Instructions_Dot_TaskClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *Dot_Instructions* updates
+    if Dot_Instructions.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        Dot_Instructions.frameNStart = frameN  # exact frame index
+        Dot_Instructions.tStart = t  # local t and not account for scr refresh
+        Dot_Instructions.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(Dot_Instructions, 'tStartRefresh')  # time at next scr refresh
+        Dot_Instructions.setAutoDraw(True)
+    
+    # *key_resp* updates
+    waitOnFlip = False
+    if key_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        key_resp.frameNStart = frameN  # exact frame index
+        key_resp.tStart = t  # local t and not account for scr refresh
+        key_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
+        key_resp.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if key_resp.status == STARTED and not waitOnFlip:
+        theseKeys = key_resp.getKeys(keyList=['space'], waitRelease=False)
+        _key_resp_allKeys.extend(theseKeys)
+        if len(_key_resp_allKeys):
+            key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+            key_resp.rt = _key_resp_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in Instructions_Dot_TaskComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "Instructions_Dot_Task"-------
+for thisComponent in Instructions_Dot_TaskComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('Dot_Instructions.started', Dot_Instructions.tStartRefresh)
+thisExp.addData('Dot_Instructions.stopped', Dot_Instructions.tStopRefresh)
+# check responses
+if key_resp.keys in ['', [], None]:  # No response was made
+    key_resp.keys = None
+thisExp.addData('key_resp.keys',key_resp.keys)
+if key_resp.keys != None:  # we had a response
+    thisExp.addData('key_resp.rt', key_resp.rt)
+thisExp.addData('key_resp.started', key_resp.tStartRefresh)
+thisExp.addData('key_resp.stopped', key_resp.tStopRefresh)
+thisExp.nextEntry()
+# the Routine "Instructions_Dot_Task" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# set up handler to look after randomisation of conditions etc
+trials = data.TrialHandler(nReps=1.0, method='random', 
+    extraInfo=expInfo, originPath=-1,
+    trialList=data.importConditions('Automatic_Tasks.xlsx', selection='0:5'),
+    seed=None, name='trials')
+thisExp.addLoop(trials)  # add the loop to the experiment
+thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+if thisTrial != None:
+    for paramName in thisTrial:
+        exec('{} = thisTrial[paramName]'.format(paramName))
+
+for thisTrial in trials:
+    currentLoop = trials
+    # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+    if thisTrial != None:
+        for paramName in thisTrial:
+            exec('{} = thisTrial[paramName]'.format(paramName))
+    
+    # ------Prepare to start Routine "Dot_Task_Practice"-------
+    continueRoutine = True
+    # update component parameters for each repeat
+    Dots_Practice.setImage(Dots_image)
+    Odd_Even_7.keys = []
+    Odd_Even_7.rt = []
+    _Odd_Even_7_allKeys = []
+    # keep track of which components have finished
+    Dot_Task_PracticeComponents = [Dots_Practice, Odd_Even_7]
+    for thisComponent in Dot_Task_PracticeComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    Dot_Task_PracticeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "Dot_Task_Practice"-------
+    while continueRoutine:
+        # get current time
+        t = Dot_Task_PracticeClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=Dot_Task_PracticeClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *Dots_Practice* updates
+        if Dots_Practice.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+            # keep track of start time/frame for later
+            Dots_Practice.frameNStart = frameN  # exact frame index
+            Dots_Practice.tStart = t  # local t and not account for scr refresh
+            Dots_Practice.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Dots_Practice, 'tStartRefresh')  # time at next scr refresh
+            Dots_Practice.setAutoDraw(True)
+        
+        # *Odd_Even_7* updates
+        waitOnFlip = False
+        if Odd_Even_7.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+            # keep track of start time/frame for later
+            Odd_Even_7.frameNStart = frameN  # exact frame index
+            Odd_Even_7.tStart = t  # local t and not account for scr refresh
+            Odd_Even_7.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(Odd_Even_7, 'tStartRefresh')  # time at next scr refresh
+            Odd_Even_7.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(Odd_Even_7.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(Odd_Even_7.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if Odd_Even_7.status == STARTED and not waitOnFlip:
+            theseKeys = Odd_Even_7.getKeys(keyList=['left', 'right'], waitRelease=False)
+            _Odd_Even_7_allKeys.extend(theseKeys)
+            if len(_Odd_Even_7_allKeys):
+                Odd_Even_7.keys = _Odd_Even_7_allKeys[-1].name  # just the last key pressed
+                Odd_Even_7.rt = _Odd_Even_7_allKeys[-1].rt
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in Dot_Task_PracticeComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "Dot_Task_Practice"-------
+    for thisComponent in Dot_Task_PracticeComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if Odd_Even_7.keys in ['', [], None]:  # No response was made
+        Odd_Even_7.keys = None
+    thisExp.addData('Odd_Even_7.keys',Odd_Even_7.keys)
+    if Odd_Even_7.keys != None:  # we had a response
+        thisExp.addData('Odd_Even_7.rt', Odd_Even_7.rt)
+    thisExp.nextEntry()
+    # the Routine "Dot_Task_Practice" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    thisExp.nextEntry()
+    
+# completed 1.0 repeats of 'trials'
+
 
 # ------Prepare to start Routine "Instructions_Neut_Int"-------
 continueRoutine = True
@@ -737,7 +972,7 @@ for thisNeut_Int in Neut_Int:
             win.callOnFlip(Neut_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Neut_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Neut_Int_Scale_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Neut_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Neut_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Neut_Int_Scale_Resp_allKeys.extend(theseKeys)
             if len(_Neut_Int_Scale_Resp_allKeys):
                 Neut_Int_Scale_Resp.keys = _Neut_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
@@ -1019,7 +1254,7 @@ for thisNeut_Aut in Neut_Aut:
             win.callOnFlip(Neut_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Neut_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Neut_Aut_Set_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Neut_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Neut_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Neut_Aut_Set_Resp_allKeys.extend(theseKeys)
             if len(_Neut_Aut_Set_Resp_allKeys):
                 Neut_Aut_Set_Resp.keys = _Neut_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
@@ -1165,7 +1400,6 @@ routineTimer.reset()
 
 # ------Prepare to start Routine "Pos_Prime_MDMQ"-------
 continueRoutine = True
-routineTimer.add(105.000000)
 # update component parameters for each repeat
 Pos_MDMQ_proceed.keys = []
 Pos_MDMQ_proceed.rt = []
@@ -1186,7 +1420,7 @@ Pos_Prime_MDMQClock.reset(-_timeToFirstFrame)  # t0 is time of first possible fl
 frameN = -1
 
 # -------Run Routine "Pos_Prime_MDMQ"-------
-while continueRoutine and routineTimer.getTime() > 0:
+while continueRoutine:
     # get current time
     t = Pos_Prime_MDMQClock.getTime()
     tThisFlip = win.getFutureFlipTime(clock=Pos_Prime_MDMQClock)
@@ -1219,14 +1453,6 @@ while continueRoutine and routineTimer.getTime() > 0:
         MDMQ_Scale_Pos.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(MDMQ_Scale_Pos, 'tStartRefresh')  # time at next scr refresh
         MDMQ_Scale_Pos.setAutoDraw(True)
-    if MDMQ_Scale_Pos.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > MDMQ_Scale_Pos.tStartRefresh + 60-frameTolerance:
-            # keep track of stop time/frame for later
-            MDMQ_Scale_Pos.tStop = t  # not accounting for scr refresh
-            MDMQ_Scale_Pos.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(MDMQ_Scale_Pos, 'tStopRefresh')  # time at next scr refresh
-            MDMQ_Scale_Pos.setAutoDraw(False)
     
     # *Pos_MDMQ_proceed* updates
     if Pos_MDMQ_proceed.status == NOT_STARTED and t >= 45-frameTolerance:
@@ -1238,14 +1464,6 @@ while continueRoutine and routineTimer.getTime() > 0:
         Pos_MDMQ_proceed.status = STARTED
         # keyboard checking is just starting
         Pos_MDMQ_proceed.clock.reset()  # now t=0
-    if Pos_MDMQ_proceed.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > Pos_MDMQ_proceed.tStartRefresh + 60-frameTolerance:
-            # keep track of stop time/frame for later
-            Pos_MDMQ_proceed.tStop = t  # not accounting for scr refresh
-            Pos_MDMQ_proceed.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(Pos_MDMQ_proceed, 'tStopRefresh')  # time at next scr refresh
-            Pos_MDMQ_proceed.status = FINISHED
     if Pos_MDMQ_proceed.status == STARTED:
         theseKeys = Pos_MDMQ_proceed.getKeys(keyList=['space'], waitRelease=False)
         _Pos_MDMQ_proceed_allKeys.extend(theseKeys)
@@ -1285,6 +1503,8 @@ thisExp.addData('Pos_MDMQ_proceed.keys',Pos_MDMQ_proceed.keys)
 if Pos_MDMQ_proceed.keys != None:  # we had a response
     thisExp.addData('Pos_MDMQ_proceed.rt', Pos_MDMQ_proceed.rt)
 thisExp.nextEntry()
+# the Routine "Pos_Prime_MDMQ" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # ------Prepare to start Routine "Instructions_Pos_Int"-------
 continueRoutine = True
@@ -1519,7 +1739,7 @@ for thisPos_Int in Pos_Int:
             win.callOnFlip(Pos_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Pos_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Pos_Int_Scale_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Pos_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Pos_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Pos_Int_Scale_Resp_allKeys.extend(theseKeys)
             if len(_Pos_Int_Scale_Resp_allKeys):
                 Pos_Int_Scale_Resp.keys = _Pos_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
@@ -1801,7 +2021,7 @@ for thisPos_Aut in Pos_Aut:
             win.callOnFlip(Pos_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Pos_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Pos_Aut_Set_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Pos_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Pos_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Pos_Aut_Set_Resp_allKeys.extend(theseKeys)
             if len(_Pos_Aut_Set_Resp_allKeys):
                 Pos_Aut_Set_Resp.keys = _Pos_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
@@ -1947,7 +2167,6 @@ routineTimer.reset()
 
 # ------Prepare to start Routine "Neg_Prime_MDMQ"-------
 continueRoutine = True
-routineTimer.add(105.000000)
 # update component parameters for each repeat
 Neg_MDMQ_proceed.keys = []
 Neg_MDMQ_proceed.rt = []
@@ -1968,7 +2187,7 @@ Neg_Prime_MDMQClock.reset(-_timeToFirstFrame)  # t0 is time of first possible fl
 frameN = -1
 
 # -------Run Routine "Neg_Prime_MDMQ"-------
-while continueRoutine and routineTimer.getTime() > 0:
+while continueRoutine:
     # get current time
     t = Neg_Prime_MDMQClock.getTime()
     tThisFlip = win.getFutureFlipTime(clock=Neg_Prime_MDMQClock)
@@ -2001,14 +2220,6 @@ while continueRoutine and routineTimer.getTime() > 0:
         MDMQ_Scale_Neg.tStartRefresh = tThisFlipGlobal  # on global time
         win.timeOnFlip(MDMQ_Scale_Neg, 'tStartRefresh')  # time at next scr refresh
         MDMQ_Scale_Neg.setAutoDraw(True)
-    if MDMQ_Scale_Neg.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > MDMQ_Scale_Neg.tStartRefresh + 60-frameTolerance:
-            # keep track of stop time/frame for later
-            MDMQ_Scale_Neg.tStop = t  # not accounting for scr refresh
-            MDMQ_Scale_Neg.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(MDMQ_Scale_Neg, 'tStopRefresh')  # time at next scr refresh
-            MDMQ_Scale_Neg.setAutoDraw(False)
     
     # *Neg_MDMQ_proceed* updates
     if Neg_MDMQ_proceed.status == NOT_STARTED and t >= 45-frameTolerance:
@@ -2020,14 +2231,6 @@ while continueRoutine and routineTimer.getTime() > 0:
         Neg_MDMQ_proceed.status = STARTED
         # keyboard checking is just starting
         Neg_MDMQ_proceed.clock.reset()  # now t=0
-    if Neg_MDMQ_proceed.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > Neg_MDMQ_proceed.tStartRefresh + 60-frameTolerance:
-            # keep track of stop time/frame for later
-            Neg_MDMQ_proceed.tStop = t  # not accounting for scr refresh
-            Neg_MDMQ_proceed.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(Neg_MDMQ_proceed, 'tStopRefresh')  # time at next scr refresh
-            Neg_MDMQ_proceed.status = FINISHED
     if Neg_MDMQ_proceed.status == STARTED:
         theseKeys = Neg_MDMQ_proceed.getKeys(keyList=['space'], waitRelease=False)
         _Neg_MDMQ_proceed_allKeys.extend(theseKeys)
@@ -2067,6 +2270,8 @@ thisExp.addData('Neg_MDMQ_proceed.keys',Neg_MDMQ_proceed.keys)
 if Neg_MDMQ_proceed.keys != None:  # we had a response
     thisExp.addData('Neg_MDMQ_proceed.rt', Neg_MDMQ_proceed.rt)
 thisExp.nextEntry()
+# the Routine "Neg_Prime_MDMQ" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # ------Prepare to start Routine "Instructions_Neg_Int"-------
 continueRoutine = True
@@ -2301,7 +2506,7 @@ for thisNeg_Int in Neg_Int:
             win.callOnFlip(Neg_Int_Scale_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Neg_Int_Scale_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Neg_Int_Scale_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Neg_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Neg_Int_Scale_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Neg_Int_Scale_Resp_allKeys.extend(theseKeys)
             if len(_Neg_Int_Scale_Resp_allKeys):
                 Neg_Int_Scale_Resp.keys = _Neg_Int_Scale_Resp_allKeys[-1].name  # just the last key pressed
@@ -2583,7 +2788,7 @@ for thisNeg_Aut in Neg_Aut:
             win.callOnFlip(Neg_Aut_Set_Resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(Neg_Aut_Set_Resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if Neg_Aut_Set_Resp.status == STARTED and not waitOnFlip:
-            theseKeys = Neg_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6'], waitRelease=False)
+            theseKeys = Neg_Aut_Set_Resp.getKeys(keyList=['1', '2', '3', '4', '5', '6', '7'], waitRelease=False)
             _Neg_Aut_Set_Resp_allKeys.extend(theseKeys)
             if len(_Neg_Aut_Set_Resp_allKeys):
                 Neg_Aut_Set_Resp.keys = _Neg_Aut_Set_Resp_allKeys[-1].name  # just the last key pressed
@@ -2643,8 +2848,3 @@ logging.flush()
 thisExp.abort()  # or data files will save again on exit
 win.close()
 core.quit()
-
-
-
-#program over. Data files should be automaticaly saved in a special folder 
-#created by psychopy. 
